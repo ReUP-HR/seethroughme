@@ -13,11 +13,11 @@ class TranslateResult extends Component {
       targetLanguage: 'en'
     }
 
-    this.componentDidUpdate = this.componentDidUpdate.bind(this);
+    this.componentWillMount = this.componentWillMount.bind(this);
     this.onLangSelect = this.onLangSelect.bind(this);
   }
 
-  componentDidUpdate(prevProps, prevState) {
+  componentWillMount(prevProps, prevState) {
     const mappedKeywords = this.props.keywords.map(v => v.class);
     this.setState({
       keywords: mappedKeywords

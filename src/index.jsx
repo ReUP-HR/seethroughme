@@ -31,9 +31,6 @@ class Root extends Component {
     this.setImgURL = this.setImgURL.bind(this);
   }
 
-  componentDidUpdate() {
-  }
-
   setRootKeywords(keywords) {
     this.setState({ keywords }, () => {
       browserHistory.push('/translate');

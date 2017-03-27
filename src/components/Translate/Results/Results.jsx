@@ -17,6 +17,7 @@ class Results extends Component {
       spokenLanguage: '',
       playing: false,
       transcribing: false,
+      transcribeSpinner: false,
       ocrString: null,
       originalOCRString: null,
       transcriptionLanguage: 'en',
@@ -57,8 +58,16 @@ class Results extends Component {
   }
 
   startTranscription() {
+    console.log('STARTING TRANSCRIPTION');
     this.setState({
       transcribing: true,
+      transcribeSpinner: true
+    })
+  }
+
+  finishTranscription() {
+    this.setState({
+      transcribeSpinner: false
     })
   }
 
@@ -88,17 +97,21 @@ class Results extends Component {
     });
   }
 
-  render() {
-    if (this.state.transcribing) {
-      TranscribeSection = () => (
-        <OCR imgURL={this.props.imgURL} ocrString={this.state.ocrString} transcribe={this.transcribe}/>
-      )
-    } else {
-      TranscribeSection = () => (
+  componentWillMount() {
+    TranscribeSection = () => (
         <button className="btn btn-primary" onClick={this.startTranscription}>Click here to transcribe!</button>
       )
-    }
-    console.log('CURRENTKEYWORDS!!!!: ', this.props.keywords);
+  }
+
+  render() {
+    // console.log('CURRENT STATE OF TRANSCRIBING:', this.state.transcribing);
+
+    if (this.state.transcribing && this.state.ocrString === null) {
+      TranscribeSection = () => (
+        <OCR imgURL={this.props.imgURL} ocrString={this.state.ocrString} transcribe={this.transcribe} />
+      )
+    } 
+
     return (
       <div className="results-container, tile">
         <div className="results-item">

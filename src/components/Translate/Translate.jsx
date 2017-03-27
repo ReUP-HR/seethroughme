@@ -10,23 +10,10 @@ class Translate extends Component {
 
     this.state = {
       keywords: [],
-      /*keywords: []*/
     }
-    
-/*    this.componentDidMount = this.componentDidMount.bind(this);*/
-    // this.componentWillReceiveProps = this.componentWillReceiveProps.bind(this);
-    console.log('translate UPLODAD:', this.props.uploads);
   }
-/*
-  componentDidMount() {
-    this.setState({
-      keywords: this.props.keywords,
-    });
-    console.log('this.state.keywords after mount: ', this.state.keywords);
-  }*/
 
   render() {
-
     console.log('this.props.keywords!: ', this.props.keywords);
     console.log('this.state.keywords in render: ', this.state.keywords);
     const settings = { 
